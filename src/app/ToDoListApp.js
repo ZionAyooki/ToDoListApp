@@ -3,9 +3,12 @@ import { v4 as uuid } from 'uuid';
 import NewToDoForm from '../components/NewToDoForm';
 import ToDoItem from '../components/ToDoItem';
 
+import { FILTER_MAP, FILTER_NAMES } from '../data/filterData';
+import FilterButton from '../components/FilterButton';
+
 const ToDoListApp = () => {
   const [list, setList] = useState([]);
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState(FILTER_NAMES[0]);
 
   const addTodo = (todo) => {
     const newTodo = { id: uuid(), text: todo, isDone: false };
@@ -24,13 +27,15 @@ const ToDoListApp = () => {
     setList([...list.map(todo => todo.id === todoId ? {...todo, isDone: !todo.isDone} : todo)]);
   };
 
-  const updateFilter = () => {
-
+  const updateFilter = (newFilter) => {
+    setFilter(newFilter);
   };
 
-  const todosList = list.map(todo => (
+  const filterButtons = FILTER_NAMES.map(name => <FilterButton key={name} name={name} isActive={name === filter} updateFilter={updateFilter} />);
+  const filteredList = list.filter(FILTER_MAP[filter]).map(todo => (
     <ToDoItem key={todo.id} todo={todo} removeTodo={removeTodo} editTodo={editTodo} changeDone={changeDone} />
   ));
+  const todosCount = list.length;
 
   return (
     <div className="container">
@@ -45,17 +50,15 @@ const ToDoListApp = () => {
           <div className="row">
             <div className="col-12 d-flex align-items-center justify-content-between mb-5">
               <div className="status">
-                3 tasks left
+                {todosCount} tasks left
               </div>
               <div className="filter">
                 Filter:
-                <button className="btn btn-outline-dark">All</button>
-                <button className="btn btn-outline-dark">Active</button>
-                <button className="btn btn-outline-dark">Completed</button>
+                {filterButtons}
               </div>
             </div>
             <div className="col-12">
-              {todosList}
+              {filteredList}
             </div>
           </div>
         </div>
