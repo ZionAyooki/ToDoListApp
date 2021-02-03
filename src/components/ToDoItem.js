@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
+import EditToDoForm from './EditToDoForm';
+import ShowToDoItem from './ShowToDoItem';
 
 const ToDoItem = ({ todo, removeTodo, editTodo, changeDone }) => {
+  const [isEdit, setIsEdit] = useState(false);
+
+  const handleEdit = (newTodo) => {
+    if (newTodo) {
+      if (todo.text !== newTodo) {
+        editTodo(todo.id, newTodo);
+      }
+    }
+    setIsEdit(false);
+  }
+
   return (
     <div className="todo-item">
-      <div className="form-check">
-        <input
-          id={todo.id} type="checkbox" className="form-check-input"
-          defaultChecked={todo.isDone} onChange={() => changeDone(todo.id)}
-        />
-        <label className="form-check-label" htmlFor={todo.id}>{todo.text}</label>
-      </div>
-      <div className="todo-delete">
-        <button className="btn btn-outline-danger">Edit</button>
-        <button
-          className="btn btn-outline-danger"
-          onClick={() => removeTodo(todo.id)}
-        >
-          Remove
-        </button>
-      </div>
+      {isEdit ? <EditToDoForm todo={todo} editTodo={handleEdit} /> : <ShowToDoItem todo={todo} changeDone={changeDone} editTodo={() => setIsEdit(true)} removeTodo={removeTodo} /> }
     </div>
   );
 };

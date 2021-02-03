@@ -17,7 +17,7 @@ const ToDoListApp = () => {
   };
 
   const editTodo = (todoId, newTodo) => {
-
+    setList([...list.map(todo => todo.id === todoId ? {...todo, text: newTodo} : todo)]);
   };
 
   const changeDone = (todoId) => {
