@@ -14,7 +14,7 @@ const NewToDoForm = ({ addToDo }) => {
   }
 
   return (
-    <form id="new-todo" onSubmit={handleSubmit}>
+    <form id="new-todo-form" onSubmit={handleSubmit}>
       <div className="input-group input-group-lg mb-3">
         <input
           id="new-todo" type="text" className="form-control" autoComplete="off"

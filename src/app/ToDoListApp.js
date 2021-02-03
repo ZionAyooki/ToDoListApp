@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import NewToDoForm from '../components/NewToDoForm';
+import ToDoItem from '../components/ToDoItem';
 
 const ToDoListApp = () => {
   const [list, setList] = useState([]);
@@ -26,7 +27,11 @@ const ToDoListApp = () => {
   const updateFilter = () => {
 
   };
-  
+
+  const todosList = list.map(todo => (
+    <ToDoItem key={todo.id} todo={todo} removeTodo={removeTodo} editTodo={editTodo} changeDone={changeDone} />
+  ));
+
   return (
     <div className="container">
       <h1 className="text-center">My Todos</h1>
@@ -50,36 +55,7 @@ const ToDoListApp = () => {
               </div>
             </div>
             <div className="col-12">
-              <div className="todo-item">
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" id="todo-0" defaultChecked={true} />
-                  <label className="form-check-label" htmlFor="todo-0">Task</label>
-                </div>
-                <div className="todo-delete">
-                  <button className="btn btn-outline-danger">Edit</button>
-                  <button className="btn btn-outline-danger">Remove</button>
-                </div>
-              </div>
-              <div className="todo-item">
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" id="todo-0" defaultChecked={false} />
-                  <label className="form-check-label" htmlFor="todo-0">Task</label>
-                </div>
-                <div className="todo-delete">
-                  <button className="btn btn-outline-danger">Edit</button>
-                  <button className="btn btn-outline-danger">Remove</button>
-                </div>
-              </div>
-              <div className="todo-item">
-                <div className="form-check">
-                  <input className="form-check-input" type="checkbox" id="todo-0" defaultChecked={true} />
-                  <label className="form-check-label" htmlFor="todo-0">Task</label>
-                </div>
-                <div className="todo-delete">
-                  <button className="btn btn-outline-danger">Edit</button>
-                  <button className="btn btn-outline-danger">Remove</button>
-                </div>
-              </div>
+              {todosList}
             </div>
           </div>
         </div>
