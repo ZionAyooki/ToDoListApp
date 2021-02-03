@@ -4,6 +4,26 @@ const ToDoListApp = () => {
   const [list, setList] = useState([]);
   const [filter, setFilter] = useState('All');
 
+  const addTodo = (newTodo) => {
+
+  };
+
+  const removeTodo = (todoId) => {
+
+  };
+
+  const editTodo = (todoId, newTodo) => {
+
+  };
+
+  const changeDone = (todoId) => {
+
+  };
+
+  const updateFilter = () => {
+
+  };
+
   return (
     <div className="container">
       <h1 className="text-center">My Todos</h1>
