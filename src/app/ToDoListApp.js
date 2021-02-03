@@ -21,7 +21,7 @@ const ToDoListApp = () => {
   };
 
   const changeDone = (todoId) => {
-
+    setList([...list.map(todo => todo.id === todoId ? {...todo, isDone: !todo.isDone} : todo)]);
   };
 
   const updateFilter = () => {

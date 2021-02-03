@@ -4,7 +4,10 @@ const ToDoItem = ({ todo, removeTodo, editTodo, changeDone }) => {
   return (
     <div className="todo-item">
       <div className="form-check">
-        <input className="form-check-input" type="checkbox" id={todo.id} defaultChecked={todo.isDone} />
+        <input
+          id={todo.id} type="checkbox" className="form-check-input"
+          defaultChecked={todo.isDone} onChange={() => changeDone(todo.id)}
+        />
         <label className="form-check-label" htmlFor={todo.id}>{todo.text}</label>
       </div>
       <div className="todo-delete">
