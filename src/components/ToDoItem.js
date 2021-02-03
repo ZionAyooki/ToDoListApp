@@ -12,7 +12,12 @@ const ToDoItem = ({ todo, removeTodo, editTodo, changeDone }) => {
       </div>
       <div className="todo-delete">
         <button className="btn btn-outline-danger">Edit</button>
-        <button className="btn btn-outline-danger">Remove</button>
+        <button
+          className="btn btn-outline-danger"
+          onClick={() => removeTodo(todo.id)}
+        >
+          Remove
+        </button>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const ToDoListApp = () => {
   };
 
   const removeTodo = (todoId) => {
-
+    setList([...list.filter(todo => todo.id !== todoId)]);
   };
 
   const editTodo = (todoId, newTodo) => {
