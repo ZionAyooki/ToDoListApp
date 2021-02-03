@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { v4 as uuid } from 'uuid';
+import NewToDoForm from '../components/NewToDoForm';
 
 const ToDoListApp = () => {
   const [list, setList] = useState([]);
   const [filter, setFilter] = useState('All');
 
-  const addTodo = (newTodo) => {
-
+  const addTodo = (todo) => {
+    const newTodo = { id: uuid(), text: todo, isDone: false };
+    setList([...list, newTodo]);
   };
 
   const removeTodo = (todoId) => {
@@ -23,18 +26,13 @@ const ToDoListApp = () => {
   const updateFilter = () => {
 
   };
-
+  
   return (
     <div className="container">
       <h1 className="text-center">My Todos</h1>
       <div className="row">
         <div className="col-12">
-          <form id="new-todo">
-            <div className="input-group input-group-lg mb-3">
-              <input type="text" className="form-control" placeholder="What to do next?" aria-label="New todo" />
-              <button className="btn btn-success" type="submit">Add To-Do</button>
-            </div>
-          </form>
+          <NewToDoForm addToDo={addTodo} />
         </div>
       </div>
       <div className="row">
