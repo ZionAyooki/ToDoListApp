@@ -15,7 +15,7 @@ const ToDoItem = ({ todo, removeTodo, editTodo, changeDone }) => {
   }
 
   return (
-    <div className="todo-item">
+    <div className="col-12 todo-item">
       {isEdit ? <EditToDoForm todo={todo} editTodo={handleEdit} /> : <ShowToDoItem todo={todo} changeDone={changeDone} editTodo={() => setIsEdit(true)} removeTodo={removeTodo} /> }
     </div>
   );

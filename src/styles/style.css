@@ -1,0 +1,129 @@
+body {
+    font-family: "Rubik", sans-serif;
+}
+
+#root {
+    width: 100%;
+    max-width: 48rem;
+    margin: 1rem auto;
+    padding: 0.5rem;
+}
+
+.app-container {
+    box-shadow: 0 0 0.5rem #ccc;
+
+}
+
+h1 {
+    color: #1c1c1c;
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.filter-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.filter-buttons, .todo-list-status {
+    flex-grow: 1;
+}
+
+.filter-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 0.75rem;
+}
+
+.filter-button {
+    flex-grow: 1;
+}
+.filter-button[aria-pressed="true"] {
+    background-color: #212529;
+    border-color: #212529;
+    color: #fff;
+}
+
+.todo-list-status {
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+.todo-item {
+    padding: 1rem 0.5rem;
+    border-top: 1px solid black;
+}
+
+.todo-show, .todo-edit {
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-show .form-check {
+    display: flex;
+    align-items: center;
+}
+.todo-show .form-check-input {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    margin-top: 0;
+}
+.todo-show .form-check-label {
+    font-size: 1.125rem;
+    overflow-wrap: anywhere;
+}
+
+.todo-show .form-check-input:checked {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.todo-show .form-check-input:checked + .form-check-label {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+.todo-item .btn-group .btn {
+    border-radius: 0;
+    padding: 0.25rem 0.5rem;
+}
+
+.todo-edit input {
+    margin-bottom: 0.125rem;
+}
+
+
+@media all and (min-width: 576px) {
+    .filter-row {
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .filter-buttons {
+        margin-bottom: 0;
+    }
+
+    .todo-item {
+        padding: 1rem 0.5rem;
+    }
+    .todo-show, .todo-edit {
+        flex-direction: row;
+    }
+    .todo-show .form-check-input {
+        width: 2rem;
+        height: 2rem;
+    }
+    .todo-item .btn-group {
+        align-self: center;
+        margin-left: auto;
+    }
+
+    .todo-edit input {
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+    }
+}

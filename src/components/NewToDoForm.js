@@ -15,13 +15,13 @@ const NewToDoForm = ({ addToDo }) => {
 
   return (
     <form id="new-todo-form" onSubmit={handleSubmit}>
-      <div className="input-group input-group-lg mb-3">
+      <div className="input-group mb-3">
         <input
           id="new-todo" type="text" className="form-control" autoComplete="off"
           placeholder="What to do next?" aria-label="New todo"
           value={todo} onChange={handleChange}
         />
-        <button className="btn btn-success" type="submit">Add To-Do</button>
+        <button className="btn btn-primary" type="submit">Add To-Do</button>
       </div>
     </form>
   );

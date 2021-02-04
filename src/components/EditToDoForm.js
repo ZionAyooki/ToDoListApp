@@ -14,19 +14,21 @@ const EditToDoForm = ({ todo, editTodo }) => {
 
   return (
     <form id="edit-todo-form" onSubmit={(e) => handleSubmit(e, newTodo)}>
-      <div className="input-group input-group-lg mb-3">
+      <div className="todo-edit">
         <input
           id="edit-todo" type="text" className="form-control" autoComplete="off"
           placeholder="What to do next?" aria-label="New todo"
           value={newTodo} onChange={handleChange}
         />
-        <button className="btn btn-success" type="submit">Save</button>
-        <button
-          className="btn btn-success" type="button"
-          onClick={(e) => handleSubmit(e, null)}
-        >
-          Cancel
-        </button>
+        <div className="btn-group">
+          <button className="btn btn-success" type="submit">Save</button>
+          <button
+            className="btn btn-outline-danger" type="button"
+            onClick={(e) => handleSubmit(e, null)}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </form>
   );

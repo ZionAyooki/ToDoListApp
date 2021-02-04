@@ -2,7 +2,7 @@ import React from 'react';
 
 const ShowToDoItem = ({ todo, removeTodo, editTodo, changeDone  }) => {
   return (
-    <div>
+    <div className="todo-show">
       <div className="form-check">
         <input
           id={todo.id} type="checkbox" className="form-check-input"
@@ -10,15 +10,15 @@ const ShowToDoItem = ({ todo, removeTodo, editTodo, changeDone  }) => {
         />
         <label className="form-check-label" htmlFor={todo.id}>{todo.text}</label>
       </div>
-      <div className="todo-delete">
+      <div className="btn-group">
         <button
-          className="btn btn-outline-danger"
+          className="btn btn-outline-secondary"
           onClick={() => editTodo(true)}
         >
           Edit
         </button>
         <button
-          className="btn btn-outline-danger"
+          className="btn btn-danger"
           onClick={() => removeTodo(todo.id)}
         >
           Remove

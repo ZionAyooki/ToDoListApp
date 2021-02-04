@@ -38,7 +38,7 @@ const ToDoListApp = () => {
   const todosCount = list.length;
 
   return (
-    <div className="container">
+    <div className="container app-container">
       <h1 className="text-center">My Todos</h1>
       <div className="row">
         <div className="col-12">
@@ -46,22 +46,17 @@ const ToDoListApp = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-12">
-          <div className="row">
-            <div className="col-12 d-flex align-items-center justify-content-between mb-5">
-              <div className="status">
-                {todosCount} tasks left
-              </div>
-              <div className="filter">
-                Filter:
-                {filterButtons}
-              </div>
-            </div>
-            <div className="col-12">
-              {filteredList}
-            </div>
+        <div className="col-12 filter-row">
+          <div className="btn-group filter-buttons">
+            {filterButtons}
+          </div>
+          <div className="todo-list-status">
+            {todosCount} tasks left
           </div>
         </div>
+      </div>
+      <div className="row">
+        {filteredList}
       </div>
     </div>
   );
