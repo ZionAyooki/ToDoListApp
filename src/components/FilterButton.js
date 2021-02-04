@@ -6,7 +6,9 @@ const FilterButton = ({ name, isActive, updateFilter }) => {
       type="button" className="btn btn-outline-dark filter-button" aria-pressed={isActive}
       onClick={() => updateFilter(name)}
     >
+      <span className="visually-hidden">Show </span>
       {name}
+      <span className="visually-hidden"> Tasks</span>
     </button>
   );
 };

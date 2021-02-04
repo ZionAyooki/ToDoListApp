@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { v4 as uuid } from 'uuid';
 import NewToDoForm from '../components/NewToDoForm';
 import ToDoItem from '../components/ToDoItem';
 
 import { FILTER_MAP, FILTER_NAMES } from '../data/filterData';
 import FilterButton from '../components/FilterButton';
+import {usePrevState} from './PrevStateHook';
 
 const ToDoListApp = () => {
   const [list, setList] = useState([]);
   const [filter, setFilter] = useState(FILTER_NAMES[0]);
+
+  const prevListCount = usePrevState(list.length);
+
+  const listStatusRef = useRef(null);
+
+  useEffect(() => {
+    if (prevListCount - list.length === 1) {
+      listStatusRef.current.focus();
+    }
+  }, [list.length, prevListCount]);
 
   const addTodo = (todo) => {
     const newTodo = { id: uuid(), text: todo, isDone: false };
@@ -35,7 +46,7 @@ const ToDoListApp = () => {
   const filteredList = list.filter(FILTER_MAP[filter]).map(todo => (
     <ToDoItem key={todo.id} todo={todo} removeTodo={removeTodo} editTodo={editTodo} changeDone={changeDone} />
   ));
-  const todosCount = list.length;
+  const statusText = list.length === 0 ? 'Your list is empty' : `Showing ${filteredList.length} out of ${list.length} task${list.length > 1 ? 's' : ''}`;
 
   return (
     <div className="container app-container">
@@ -50,8 +61,8 @@ const ToDoListApp = () => {
           <div className="btn-group filter-buttons">
             {filterButtons}
           </div>
-          <div className="todo-list-status">
-            {todosCount} tasks left
+          <div className="todo-list-status" tabIndex={-1} ref={listStatusRef}>
+            {statusText}
           </div>
         </div>
       </div>

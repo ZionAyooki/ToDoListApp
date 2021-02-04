@@ -17,11 +17,11 @@ const NewToDoForm = ({ addToDo }) => {
     <form id="new-todo-form" onSubmit={handleSubmit}>
       <div className="input-group mb-3">
         <input
-          id="new-todo" type="text" className="form-control" autoComplete="off"
-          placeholder="What to do next?" aria-label="New todo"
+          id="new-todo" type="text" className="form-control" autoComplete="off" placeholder="What to do next?"
           value={todo} onChange={handleChange}
         />
-        <button className="btn btn-primary" type="submit">Add To-Do</button>
+        <label className="visually-hidden" htmlFor="new-todo">New Task</label>
+        <button className="btn btn-primary" type="submit">Add Task</button>
       </div>
     </form>
   );
